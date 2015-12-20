@@ -4,6 +4,17 @@
 
 A cookbook for all machines. This should be put at the top of the run list for almost all machines.
 
+## What This Does
+
+* Sets up apt cookbook
+* Installs packages defined in `node["base"]["packages"]` (see attributes)
+
+## Attributes
+
+Attribute|Description|Default
+---------|-----------|-------
+`node["base"]["packages"]` | An array of apt packages to be installed | `[]`
+
 ## Contributing
 
 To do any of the things, you'll need [ChefDK] and [Vagrant] installed.

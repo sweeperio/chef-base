@@ -1,9 +1,11 @@
 require "spec_helper"
 
 describe "base::default" do
-  # Serverspec examples can be found at
-  # http://serverspec.org/resource_types.html
-  it "does something" do
-    skip "Replace this with meaningful tests"
+  APPS = %w(ag)
+
+  APPS.each do |app|
+    describe command("which #{app}") do
+      its(:stdout) { should_not eq("") }
+    end
   end
 end

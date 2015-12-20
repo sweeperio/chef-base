@@ -7,14 +7,23 @@
 require "spec_helper"
 
 describe "base::default" do
-  context "When all attributes are default, on an unspecified platform" do
-    let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
-      runner.converge(described_recipe)
+  INCLUDED_RECIPES = %w(apt)
+
+  cached(:chef_run) do
+    runner = ChefSpec::ServerRunner.new do |node|
+      node.set["base"]["packages"] = %w(curl)
     end
 
-    it "converges successfully" do
-      expect { chef_run }.to_not raise_error
+    runner.converge(described_recipe)
+  end
+
+  it "includes expected recipes" do
+    INCLUDED_RECIPES.each do |recipe|
+      expect(chef_run).to include_recipe(recipe)
     end
+  end
+
+  it "installs packages specified in the attribute" do
+    expect(chef_run).to install_package("curl")
   end
 end

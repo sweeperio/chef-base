@@ -13,3 +13,6 @@ suites:
     run_list:
       - recipe[base::default]
     attributes:
+      base:
+        packages:
+          - silversearcher-ag
