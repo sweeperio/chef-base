@@ -6,5 +6,6 @@
 
 include_recipe "apt"
 include_recipe "build-essential"
+include_recipe "base::git"
 
 node["base"]["packages"].each { |pkg| package(pkg) }

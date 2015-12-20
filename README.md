@@ -14,6 +14,8 @@ A cookbook for all machines. This should be put at the top of the run list for a
 Attribute|Description|Default
 ---------|-----------|-------
 `node["base"]["packages"]` | An array of apt packages to be installed | `[]`
+`node["base"]["git"]["version"]` | The version of git to install | `2.6.4`
+`node["base"]["git"]["checksum"]` | The sha256 checksum of the version's tarball | `08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed`
 
 ## Contributing
 
