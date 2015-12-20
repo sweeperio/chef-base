@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "base::default" do
-  APPS     = %w(ag git runsv sv).freeze
+  APPS     = %w(ag chef-client git runsv sv).freeze
   PACKAGES = %w(autoconf build-essential).freeze
 
   APPS.each do |app|

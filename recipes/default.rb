@@ -7,6 +7,7 @@
 include_recipe "apt"
 include_recipe "build-essential"
 include_recipe "base::git"
+include_recipe "chef-client"
 include_recipe "runit"
 
 node["base"]["packages"].each { |pkg| package(pkg) }

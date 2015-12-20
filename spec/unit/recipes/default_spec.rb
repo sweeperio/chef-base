@@ -7,7 +7,7 @@
 require "spec_helper"
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt build-essential base::git runit)
+  INCLUDED_RECIPES = %w(apt build-essential base::git chef-client runit)
 
   cached(:chef_run) do
     runner = ChefSpec::ServerRunner.new do |node|

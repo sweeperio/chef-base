@@ -8,6 +8,10 @@ A cookbook for all machines. This should be put at the top of the run list for a
 
 * Sets up apt cookbook
 * Installs packages defined in `node["base"]["packages"]` (see attributes)
+* Installs [runit]
+* Configures chef-client to run periodically (see attributes)
+
+[runit]: http://smarden.org/runit/
 
 ## Attributes
 
@@ -16,6 +20,18 @@ Attribute|Description|Default
 `node["base"]["packages"]` | An array of apt packages to be installed | `[]`
 `node["base"]["git"]["version"]` | The version of git to install | `2.6.4`
 `node["base"]["git"]["checksum"]` | The sha256 checksum of the version's tarball | `08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed`
+
+
+### Chef-Client Attributes
+
+These are using [the defaults], but the two below really should/must be set.
+
+Attribute|Description|Default
+---------|-----------|-------
+`node["chef_client"]["server_url"]` | The URL for your chef server | `http://localhost:4000`
+`node["chef_client"]["validation_client_name"]` | The validator name | `chef-validator`
+
+[defaults]: https://github.com/cookbooks/chef-client
 
 ## Contributing
 
