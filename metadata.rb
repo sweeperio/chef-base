@@ -9,3 +9,4 @@ version           "0.1.0"
 # rubocop:enable Style/SingleSpaceBeforeFirstArg
 
 depends "apt"
+depends "build-essential"
