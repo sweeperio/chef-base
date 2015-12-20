@@ -9,5 +9,8 @@ include_recipe "build-essential"
 include_recipe "base::git"
 include_recipe "chef-client"
 include_recipe "runit"
+include_recipe "sudo"
 
 node["base"]["packages"].each { |pkg| package(pkg) }
+
+group "sudoers"

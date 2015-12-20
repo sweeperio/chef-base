@@ -10,6 +10,7 @@ A cookbook for all machines. This should be put at the top of the run list for a
 * Installs packages defined in `node["base"]["packages"]` (see attributes)
 * Installs [runit]
 * Configures chef-client to run periodically (see attributes)
+* Creates a sudoers group and grants passwordless sudo access to it
 
 [runit]: http://smarden.org/runit/
 
@@ -32,6 +33,17 @@ Attribute|Description|Default
 `node["chef_client"]["validation_client_name"]` | The validator name | `chef-validator`
 
 [defaults]: https://github.com/cookbooks/chef-client
+
+### Default Sudo Settings
+
+See [sudo cookbook] for options.
+
+Attribute|Description|Default
+---------|-----------|-------
+`node["authorization"]["sudo"]["groups"]` | Groups to enable sudo access for | `%w(sudoers)`
+`node["authorization"]["sudo"]["passwordless"]` | Whether or not to require passwords for sudo | `false`
+
+[sudo cookbook]: https://github.com/chef-cookbooks/sudo
 
 ## Contributing
 

@@ -7,9 +7,11 @@
 require "spec_helper"
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt build-essential base::git chef-client runit)
+  INCLUDED_RECIPES = %w(apt build-essential base::git chef-client runit sudo)
 
   cached(:chef_run) do
+    stub_command("which sudo")
+
     runner = ChefSpec::ServerRunner.new do |node|
       node.set["base"]["packages"] = %w(curl)
     end
@@ -25,5 +27,13 @@ describe "base::default" do
 
   it "installs packages specified in the attribute" do
     expect(chef_run).to install_package("curl")
+  end
+
+  it "creates sudoers group" do
+    expect(chef_run).to create_group("sudoers")
+  end
+
+  it "grants passwordless sudo for sudoers group" do
+    expect(chef_run).to render_file("/etc/sudoers").with_content("%sudoers ALL=(ALL) NOPASSWD:ALL")
   end
 end
