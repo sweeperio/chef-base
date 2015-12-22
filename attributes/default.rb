@@ -14,6 +14,6 @@ default["base"]["packages"] = %w(
 )
 
 default["base"]["ruby"] = {
-  "source" => "http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz",
+  "source"   => "http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz",
   "checksum" => "df795f2f99860745a416092a4004b016ccf77e8b82dec956b120f18bdc71edce"
 }
