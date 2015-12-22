@@ -7,7 +7,7 @@
 require "spec_helper"
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt build-essential base::git chef-client runit sudo)
+  INCLUDED_RECIPES = %w(apt build-essential base::git base::ruby chef-client runit sudo)
 
   cached(:chef_run) do
     stub_command("which sudo")

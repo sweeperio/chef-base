@@ -9,8 +9,10 @@ A cookbook for all machines. This should be put at the top of the run list for a
 * Sets up apt cookbook
 * Installs packages defined in `node["base"]["packages"]` (see attributes)
 * Installs [runit]
+* Installs a recent version of git from source
 * Configures chef-client to run periodically (see attributes)
 * Creates a sudoers group and grants passwordless sudo access to it
+* Installs a system ruby (see attributes)
 
 [runit]: http://smarden.org/runit/
 
@@ -21,6 +23,8 @@ Attribute|Description|Default
 `node["base"]["packages"]` | An array of apt packages to be installed | `[]`
 `node["base"]["git"]["version"]` | The version of git to install | `2.6.4`
 `node["base"]["git"]["checksum"]` | The sha256 checksum of the version's tarball | `08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed`
+`node["base"]["ruby"]["source"]` | The URL of the ruby tarball to install | `http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz`
+`node["base"]["ruby"]["checksum"]` | The sha256 checksum of the tarball | `df795f2f99860745a416092a4004b016ccf77e8b82dec956b120f18bdc71edce`
 
 
 ### Chef-Client Attributes
@@ -41,7 +45,7 @@ See [sudo cookbook] for options.
 Attribute|Description|Default
 ---------|-----------|-------
 `node["authorization"]["sudo"]["groups"]` | Groups to enable sudo access for | `%w(sudoers)`
-`node["authorization"]["sudo"]["passwordless"]` | Whether or not to require passwords for sudo | `false`
+`node["authorization"]["sudo"]["passwordless"]` | Whether or not to require passwords for sudo | `true`
 
 [sudo cookbook]: https://github.com/chef-cookbooks/sudo
 
