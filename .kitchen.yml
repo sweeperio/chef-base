@@ -13,6 +13,10 @@ suites:
     run_list:
       - recipe[base::default]
     attributes:
+      authorization:
+        sudo:
+          users:
+            - vagrant
       base:
         packages:
           - silversearcher-ag
