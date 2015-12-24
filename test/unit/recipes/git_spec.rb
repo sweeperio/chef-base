@@ -4,8 +4,6 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-require "spec_helper"
-
 describe "base::git" do
   cached(:chef_run) do
     runner = ChefSpec::ServerRunner.new

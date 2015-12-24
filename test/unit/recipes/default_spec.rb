@@ -4,8 +4,6 @@
 #
 # Copyright (c) 2015 Sweeper Devs, All Rights Reserved.
 
-require "spec_helper"
-
 describe "base::default" do
   INCLUDED_RECIPES = %w(apt build-essential base::git base::ruby chef-client runit sudo)
 

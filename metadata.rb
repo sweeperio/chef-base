@@ -8,6 +8,8 @@ long_description  "A cookbook that applies for all machines"
 version           "0.1.0"
 # rubocop:enable Style/SingleSpaceBeforeFirstArg
 
+supports "ubuntu"
+
 depends "apt"
 depends "ark"
 depends "build-essential"
