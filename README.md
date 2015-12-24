@@ -49,6 +49,18 @@ Attribute|Description|Default
 
 [sudo cookbook]: https://github.com/chef-cookbooks/sudo
 
+### Default User Settings
+
+See [user cookbook] for options. For now, the defaults are left as is.
+
+To add a user account, add the following to the role/node attributes:
+
+`"users": ["user1", "user2"]`
+
+These will be pulled from the `users` data bag on the chef server.
+
+[user cookbook]: https://github.com/fnichol/chef-user
+
 ## Contributing
 
 To do any of the things, you'll need [ChefDK] and [Vagrant] installed.

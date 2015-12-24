@@ -6,7 +6,7 @@
 
 describe "base::git" do
   cached(:chef_run) do
-    runner = ChefSpec::ServerRunner.new
+    runner = ChefSpec::SoloRunner.new
     runner.converge(described_recipe)
   end
 
