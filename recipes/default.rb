@@ -11,6 +11,7 @@ include_recipe "base::ruby"
 include_recipe "chef-client"
 include_recipe "runit"
 include_recipe "sudo"
+include_recipe "user::data_bag"
 
 node["base"]["packages"].each { |pkg| package(pkg) }
 
