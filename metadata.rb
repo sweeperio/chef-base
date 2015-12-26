@@ -5,7 +5,7 @@ maintainer_email  "developers@sweeper.io"
 license           "mit"
 description       "A cookbook that applies for all machines"
 long_description  "A cookbook that applies for all machines"
-version           "0.2.0"
+version           "0.3.0"
 # rubocop:enable Style/SingleSpaceBeforeFirstArg
 
 supports "ubuntu"
