@@ -26,5 +26,29 @@ describe "base::default" do
     describe command("ruby -v") do
       its(:stdout) { should contain("2.2.3") }
     end
+
+    describe command("gem list") do
+      its(:stdout) { should contain("bundler ") }
+    end
+  end
+
+  context "ejson" do
+    describe command("gem list") do
+      its(:stdout) { should contain("ejson ") }
+    end
+
+    describe file("/opt/ejson/keys") do
+      it { should exist }
+      it { should be_directory }
+      it { should be_owned_by("root") }
+      it { should be_grouped_into("root") }
+    end
+
+    describe file("/opt/ejson/keys/12345abc") do
+      it { should exist }
+      it { should be_file }
+      it { should be_owned_by("root") }
+      it { should be_grouped_into("root") }
+    end
   end
 end

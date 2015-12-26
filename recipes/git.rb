@@ -4,8 +4,8 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-git_version  = node["base"]["git"]["version"]
-git_checksum = node["base"]["git"]["checksum"]
+git_version  = node.attr!("base", "git", "version")
+git_checksum = node.attr!("base", "git", "checksum")
 
 %w(libcurl4-gnutls-dev libexpat1-dev).each do |prerequisite|
   package prerequisite
