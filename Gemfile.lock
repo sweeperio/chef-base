@@ -222,7 +222,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  berkshelf
-  chef
-  chefspec
-  rubocop
+  berkshelf (~> 4.0)
+  chef (~> 12.0)
+  chefspec (~> 4.0)
+  rubocop (~> 0.0)

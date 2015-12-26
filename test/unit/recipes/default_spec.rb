@@ -5,7 +5,7 @@
 # Copyright (c) 2015 Sweeper Devs, All Rights Reserved.
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt build-essential base::git base::ruby chef-client runit sudo user::data_bag)
+  INCLUDED_RECIPES = %w(apt build-essential base::ejson base::git base::ruby chef-client runit sudo user::data_bag)
 
   before do
     stub_command("which sudo")
