@@ -1,29 +1,26 @@
 require "bundler/setup"
 require "chef"
-require "chef/knife"
+
+SECRET_FILE        = "./test/integration/encrypted_data_bag_secret".freeze
+INPUT_PATH_FORMAT  = "./test/integration/data_bags/%s/%s.plaintext.json".freeze
+OUTPUT_PATH_FORMAT = "./test/integration/data_bags/%s/%s.json".freeze
 
 def raw_bag_item(args)
-  bag, item = args.values_at(:bag, :item)
-  path      = "./test/integration/data_bags/#{bag}/#{item}.json"
-  hash      = JSON.parse(File.read(path))
+  path = format(INPUT_PATH_FORMAT, *args.values_at(:bag, :item))
+  hash = JSON.parse(File.read(path))
 
   Chef::DataBagItem.from_hash(hash)
 end
 
-def load_secret
-  Chef::EncryptedDataBagItem.load_secret("./test/integration/encrypted_data_bag_secret")
-end
-
 desc "encrypts a data bag item for integration tests"
-task :encrypt, [:bag, :item] do |_, args|
-  data_bag_item  = raw_bag_item(args)
-  encrypted_item = Chef::EncryptedDataBagItem.encrypt_data_bag_item(data_bag_item, load_secret)
-  puts JSON.pretty_generate(encrypted_item.to_hash)
-end
+task :encrypt_data_bag, [:bag, :item] do |_, args|
+  data_bag_item   = raw_bag_item(args)
+  data_bag_secret = Chef::EncryptedDataBagItem.load_secret(SECRET_FILE)
+  encrypted_item  = Chef::EncryptedDataBagItem.encrypt_data_bag_item(data_bag_item, data_bag_secret)
 
-desc "decrypts a data bag item for integration tests"
-task :decrypt, [:bag, :item] do |_, args|
-  data_bag_item  = raw_bag_item(args)
-  decrypted_item = Chef::EncryptedDataBagItem.new(data_bag_item, load_secret)
-  puts JSON.pretty_generate(decrypted_item.to_hash)
+  pretty_json = JSON.pretty_generate(encrypted_item.to_hash)
+  output_path = format(OUTPUT_PATH_FORMAT, *args.values_at(:bag, :item))
+  File.open(output_path, "w") { |file| file.write(pretty_json) }
+
+  puts format("encrypted test data bag: %s", output_path)
 end
