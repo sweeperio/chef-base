@@ -76,6 +76,8 @@ Berksfile
 Berksfile.lock
 cookbooks/*
 tmp
+vendor
+vendor/*
 
 # Cookbooks #
 #############
@@ -98,5 +100,3 @@ Vagrantfile
 # Travis #
 ##########
 .travis.yml
-
-vendor/
