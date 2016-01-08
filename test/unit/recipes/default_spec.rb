@@ -25,7 +25,7 @@
 # THE SOFTWARE.
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt chef-client::runit_service git runit sudo user::data_bag)
+  INCLUDED_RECIPES = %w(apt chef-client::runit_service git ruby runit sudo user::data_bag)
 
   before do
     stub_command("which sudo")
@@ -51,6 +51,10 @@ describe "base::default" do
 
   it "installs git" do
     expect(chef_run).to install_git_version("2.7.0")
+  end
+
+  it "installs ruby" do
+    expect(chef_run).to install_ruby_version(chef_run.node.attr!("ruby", "system_version"))
   end
 
   it "creates sudoers group" do

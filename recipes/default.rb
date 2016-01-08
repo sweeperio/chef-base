@@ -26,6 +26,7 @@
 
 include_recipe "apt"
 include_recipe "git"
+include_recipe "ruby"
 include_recipe "runit"
 include_recipe "chef-client::runit_service"
 include_recipe "sudo"
