@@ -19,9 +19,8 @@ suites:
         sudo:
           users:
             - vagrant
+      users:
+        - test
       base:
-        ejson:
-          add:
-            - test
         packages:
           - silversearcher-ag
