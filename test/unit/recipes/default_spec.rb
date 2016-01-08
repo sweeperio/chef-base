@@ -25,7 +25,7 @@
 # THE SOFTWARE.
 
 describe "base::default" do
-  INCLUDED_RECIPES = %w(apt build-essential base::git chef-client::runit_service runit sudo user::data_bag)
+  INCLUDED_RECIPES = %w(apt chef-client::runit_service git runit sudo user::data_bag)
 
   before do
     stub_command("which sudo")
@@ -47,6 +47,10 @@ describe "base::default" do
 
   it "installs packages specified in the attribute" do
     expect(chef_run).to install_package("curl")
+  end
+
+  it "installs git" do
+    expect(chef_run).to install_git_version("2.7.0")
   end
 
   it "creates sudoers group" do

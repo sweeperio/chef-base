@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "base::default" do
   APPS     = %w(ag chef-client git runsv sv).freeze
-  PACKAGES = %w(autoconf build-essential silversearcher-ag).freeze
+  PACKAGES = %w(silversearcher-ag).freeze
 
   APPS.each do |app|
     describe command("which #{app}") do
@@ -18,7 +18,7 @@ describe "base::default" do
 
   context "git" do
     describe command("git version") do
-      its(:stdout) { should contain("git version 2.6.4") }
+      its(:stdout) { should contain("git version 2.7.0") }
     end
   end
 end

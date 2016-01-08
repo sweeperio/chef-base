@@ -25,8 +25,7 @@
 # THE SOFTWARE.
 
 include_recipe "apt"
-include_recipe "build-essential"
-include_recipe "base::git"
+include_recipe "git"
 include_recipe "runit"
 include_recipe "chef-client::runit_service"
 include_recipe "sudo"
