@@ -13,7 +13,6 @@ A cookbook for all machines. This should be put at the top of the run list for a
 * Configures chef-client to run periodically (see attributes)
 * Creates a sudoers group and grants passwordless sudo access to it
 * Installs a system ruby (see attributes)
-* Extracts ejson keys (see attributes)
 
 [runit]: http://smarden.org/runit/
 
@@ -21,13 +20,9 @@ A cookbook for all machines. This should be put at the top of the run list for a
 
 Attribute|Description|Default
 ---------|-----------|-------
-`node["base"]["ejson"]["add"]` | An array of ejson keys to extract from the `ejson/keys` data bag | `[]`
-`node["base"]["ejson"]["remove"]` | An array of ejson keys to remove from `/opt/ejson/keys` | `[]`
 `node["base"]["packages"]` | An array of apt packages to be installed | `curl`<br>`zlib1g-dev`<br>`libssl-dev`<br>`libreadline-dev`<br>`libyaml-dev`<br>`libcurl4-openssl-dev`<br>`libffi-dev`
 `node["base"]["git"]["version"]` | The version of git to install | `2.6.4`
 `node["base"]["git"]["checksum"]` | The sha256 checksum of the version's tarball | `08e3ccdba87ca55140c8155a07e147f6c1cdd7b574690e960763b18474fd05ed`
-`node["base"]["ruby"]["source"]` | The URL of the ruby tarball to install | `http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz`
-`node["base"]["ruby"]["checksum"]` | The sha256 checksum of the tarball | `df795f2f99860745a416092a4004b016ccf77e8b82dec956b120f18bdc71edce`
 
 
 ### Chef-Client Attributes
