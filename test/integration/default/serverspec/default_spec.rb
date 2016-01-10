@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "base::default" do
+describe "swpr_base::default" do
   APPS     = %w(ag chef-client git ruby runsv sv).freeze
   PACKAGES = %w(silversearcher-ag).freeze
 

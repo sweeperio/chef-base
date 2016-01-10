@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: swpr_base
 # Spec:: default
 #
 # The MIT License (MIT)
@@ -24,8 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-describe "base::default" do
-  INCLUDED_RECIPES = %w(apt chef-client::runit_service git ruby runit sudo user::data_bag)
+describe "swpr_base::default" do
+  INCLUDED_RECIPES = %w(apt chef-client::runit_service swpr_git swpr_ruby runit sudo user::data_bag)
 
   before do
     stub_command("which sudo")
@@ -33,7 +33,7 @@ describe "base::default" do
 
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new do |node|
-      node.set["base"]["packages"] = %w(curl)
+      node.set["swpr_base"]["packages"] = %w(curl)
     end
 
     runner.converge(described_recipe)
@@ -54,7 +54,7 @@ describe "base::default" do
   end
 
   it "installs ruby" do
-    expect(chef_run).to install_ruby_version(chef_run.node.attr!("ruby", "system_version"))
+    expect(chef_run).to install_ruby_version(chef_run.node.attr!("swpr_ruby", "system_version"))
   end
 
   it "creates sudoers group" do

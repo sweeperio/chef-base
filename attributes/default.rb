@@ -1,4 +1,4 @@
-default["base"]["packages"] = %w(
+default["swpr_base"]["packages"] = %w(
   curl
   zlib1g-dev
   libssl-dev

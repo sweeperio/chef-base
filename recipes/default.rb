@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: base
+# Cookbook Name:: swpr_base
 # Recipe:: default
 #
 # The MIT License (MIT)
@@ -27,11 +27,11 @@
 group "sudoers"
 
 include_recipe "apt"
-include_recipe "git"
-include_recipe "ruby"
+include_recipe "swpr_git"
+include_recipe "swpr_ruby"
 include_recipe "runit"
 include_recipe "chef-client::runit_service"
 include_recipe "sudo"
 include_recipe "user::data_bag"
 
-node["base"]["packages"].each { |pkg| package(pkg) }
+node["swpr_base"]["packages"].each { |pkg| package(pkg) }

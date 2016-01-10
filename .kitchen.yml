@@ -13,7 +13,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[base::default]
+      - recipe[swpr_base]
     attributes:
       authorization:
         sudo:
@@ -21,6 +21,6 @@ suites:
             - vagrant
       users:
         - test
-      base:
+      swpr_base:
         packages:
           - silversearcher-ag
